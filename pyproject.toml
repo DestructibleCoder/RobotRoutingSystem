@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "warehouse-rl"
+version = "0.1.0"
+description = "Research framework for generalizing RL task-allocation policies across warehouse layouts."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "RRS" }]
+keywords = ["reinforcement-learning", "warehouse", "task-allocation", "generalization"]
+
+# Core runtime dependencies for the simulator + greedy baseline (Milestones 1-2).
+dependencies = [
+    "numpy>=1.24",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+# Reinforcement learning (Milestones 4-6). Heavy; install only when needed.
+rl = [
+    "gymnasium>=1.0",
+    "torch>=2.0",
+    "stable-baselines3>=2.3",
+]
+# Analysis + plotting (Milestone 5-6).
+analysis = [
+    "pandas>=2.0",
+    "matplotlib>=3.7",
+]
+dev = [
+    "pytest>=7.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests", "scripts"]

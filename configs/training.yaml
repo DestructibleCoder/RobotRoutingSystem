@@ -1,0 +1,8 @@
+# Training configuration (Experiment A/B). Extends the base config.
+extends: default.yaml
+
+algorithm: greedy          # greedy | ppo | dqn
+n_training_layouts: 1      # Experiment B sweeps: 1, 3, 5, 10
+seeds: [0]
+total_timesteps: 100000
+output_dir: results/training

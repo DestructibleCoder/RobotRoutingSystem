@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Environment / editors
+.env
+.idea/
+.vscode/
+*.swp
+
+# Runtime artifacts (keep committed layouts, ignore generated results)
+results/*
+!results/.gitkeep
+notebooks/.ipynb_checkpoints/

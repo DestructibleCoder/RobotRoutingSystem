@@ -1,0 +1,9 @@
+# Evaluation configuration. Extends the base config.
+extends: default.yaml
+
+# Algorithms compared on the SAME test layouts (Experiment C).
+algorithms: [greedy]
+n_episodes: 3
+seeds: [0, 1, 2]
+output_dir: results/evaluation
+save_csv: true

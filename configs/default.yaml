@@ -1,0 +1,44 @@
+# Base configuration. Training/evaluation configs extend this file.
+#
+# Everything that affects a run is declared here so experiments are fully
+# reproducible: robot count, warehouse sizing, order stream, layout sets, seeds.
+
+seed: 0
+
+warehouse:
+  # Default grid size used when generating layouts; loaded layouts may differ.
+  width: 20
+  height: 14
+  n_robots: 4
+  pick_dwell_steps: 2
+  drop_dwell_steps: 2
+  max_steps: 500          # fixed episode horizon (steps)
+  speed: 1                # cells moved per step
+  connectivity: 4         # 4 or 8 connected A* navigation
+  decision_interval: 1    # how often the allocation policy is queried
+
+orders:
+  arrival_rate: 0.35      # P(new order each step)
+  max_pending: 25         # cap on unassigned orders
+  max_orders: 0           # 0 = unlimited total orders per episode
+  timeout_steps: 0        # 0 = disabled
+
+layout:
+  train_dir: layouts/train
+  test_dir: layouts/test
+  n_train: 10
+  n_test: 10
+  generation_seed: 20240101
+  min_width: 14
+  min_height: 10
+  max_width: 26
+  max_height: 18
+
+greedy:
+  strategy: min_completion_time   # or: nearest_robot
+
+reward:
+  completion_reward: 1.0
+  travel_weight: 0.0
+  waiting_weight: 0.0
+  timeout_penalty: 0.0
